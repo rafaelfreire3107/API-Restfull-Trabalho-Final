@@ -24,7 +24,7 @@ public class Carrinho {
 		this.desconto = desconto;
 		this.quantidade = quantidade;
 	}
-	
+
 	public void setProduto(Produto produto) {
 		id.setProduto(produto);
 	}

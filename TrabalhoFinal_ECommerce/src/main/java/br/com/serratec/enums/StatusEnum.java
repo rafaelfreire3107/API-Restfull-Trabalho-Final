@@ -6,14 +6,18 @@ import br.com.serratec.exception.EnumException;
 
 
 public enum StatusEnum {
-EM_PROCESSAMENTO(1,"Em processamento"), CONFIRMADO(2,"Confirmado"), ENVIADO(3,"Enviado"), EM_ROTA(4,"Em rota"), ENTREGUE(5,"Entregue");
+	EM_PROCESSAMENTO(1,"Em processamento"), 
+	CONFIRMADO(2,"Confirmado"), 
+	ENVIADO(3,"Enviado"), 
+	EM_ROTA(4,"Em rota"), 
+	ENTREGUE(5,"Entregue");
 	
 	private Integer codigo;
-	private String tipo;
+	private String status;
 	
-	private StatusEnum(Integer codigo, String tipo) {
+	private StatusEnum(Integer codigo, String status) {
 		this.codigo = codigo;
-		this.tipo = tipo;
+		this.status = status;
 	}
 	
 	public Integer getCodigo() {
@@ -24,12 +28,12 @@ EM_PROCESSAMENTO(1,"Em processamento"), CONFIRMADO(2,"Confirmado"), ENVIADO(3,"E
 		this.codigo = codigo;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public String getstatus() {
+		return status;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setstatus(String status) {
+		this.status = status;
 	}
 
 	@JsonCreator
