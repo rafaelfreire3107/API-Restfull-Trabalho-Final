@@ -4,19 +4,31 @@ import br.com.serratec.entity.Produto;
 
 public class ProdutoResponseDTO {
 	
+	private Long idProduto;
 	private String nomeProduto;
 	private Double valorProduto;
 	private Long qtdEstoque;
-	private Long idCategoria;
+	private String nomeCategoria;
 	
 	public ProdutoResponseDTO() {
 	}
 
 	public ProdutoResponseDTO(Produto produto) {
+		this.idProduto = produto.getId();		
 		this.nomeProduto = produto.getNome();
 		this.valorProduto = produto.getValor();
 		this.qtdEstoque = produto.getQuantidadeEstoque();
-		this.idCategoria = produto.getCategoria().getId();
+		this.nomeCategoria = produto.getCategoria().getNome();
+	}
+
+	
+	
+	public Long getIdProduto() {
+		return idProduto;
+	}
+
+	public void setIdProduto(Long idProduto) {
+		this.idProduto = idProduto;
 	}
 
 	public String getNomeProduto() {
@@ -43,13 +55,14 @@ public class ProdutoResponseDTO {
 		this.qtdEstoque = qtdEstoque;
 	}
 
-	public Long getIdCategoria() {
-		return idCategoria;
+	public String getNomeCategoria() {
+		return nomeCategoria;
 	}
 
-	public void setIdCategoria(Long idCategoria) {
-		this.idCategoria = idCategoria;
+	public void setNomeCategoria(String nomeCategoria) {
+		this.nomeCategoria = nomeCategoria;
 	}
+
 	
 	
 }

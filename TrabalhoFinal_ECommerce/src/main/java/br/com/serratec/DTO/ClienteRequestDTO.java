@@ -8,7 +8,7 @@ public class ClienteRequestDTO {
 	private String cpf;
 	private String email;
 	private String telefone;
-	//TRAZER O CEP <-------------------------------------------------------------------->
+	private String cep;
 	
 	public ClienteRequestDTO() {
 	}
@@ -18,6 +18,15 @@ public class ClienteRequestDTO {
 		this.cpf = cliente.getCpf();
 		this.email = cliente.getEmail();
 		this.telefone = cliente.getTelefone();
+		this.cep = cliente.getEndereco().getCep();
+	}
+	
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
 	public String getNome() {
@@ -51,5 +60,8 @@ public class ClienteRequestDTO {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+
+	
+	
 	
 }

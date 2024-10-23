@@ -1,60 +1,44 @@
 package br.com.serratec.entity;
 
-import br.com.serratec.entity.pk.CarrinhoPK;
-import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Carrinho {
-	
-	@EmbeddedId
-	private CarrinhoPK id = new CarrinhoPK();
-	
-	private Double valor;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	private Double subTotal;
 	private Double desconto;
 	private Integer quantidade;
 	
-	public Carrinho() {
-	}
-
-	public Carrinho(Produto produto, Pedido pedido, Double valor, Double desconto, Integer quantidade) {
-		this.id.setPedido(pedido);
-		this.id.setProduto(produto);
-		this.valor = valor;
-		this.desconto = desconto;
-		this.quantidade = quantidade;
-	}
+	@ManyToOne
+	@JoinColumn(name = "id_produto")
+	private Produto produto;
 	
-	public void setProduto(Produto produto) {
-		id.setProduto(produto);
-	}
+	@ManyToOne
+	@JoinColumn(name = "id_pedido")
+	private Pedido pedido;
 	
-	public Produto getProduto() {
-		return id.getProduto();
-	}
-	
-	public void setPedido(Pedido pedido) {
-		id.setPedido(pedido);
-	}
-	
-	public Pedido getPedido() {
-		return id.getPedido();
-	}
-
-	public CarrinhoPK getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(CarrinhoPK id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public Double getValor() {
-		return valor;
+	public Double getSubTotal() {
+		return subTotal;
 	}
 
-	public void setValor(Double valor) {
-		this.valor = valor;
+	public void setSubTotal(Double subTotal) {
+		this.subTotal = subTotal;
 	}
 
 	public Double getDesconto() {
@@ -72,7 +56,21 @@ public class Carrinho {
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
-	
-	
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
 	
 }

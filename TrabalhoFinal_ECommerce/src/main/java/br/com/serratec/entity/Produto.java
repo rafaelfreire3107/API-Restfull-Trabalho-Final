@@ -1,22 +1,19 @@
 package br.com.serratec.entity;
 
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
 public class Produto {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String nome;
 	private Double valor;
@@ -25,13 +22,6 @@ public class Produto {
 	@OneToOne
 	@JoinColumn(name = "id_categoria")
 	private Categoria categoria;
-	
-	@OneToMany(mappedBy = "id.produto")
-	private Set<Carrinho> carrinho = new HashSet<>();
-	
-	public Set<Carrinho> getCarrinho() {
-		return carrinho;
-	}
 	
 	public Long getId() {
 		return id;
@@ -57,9 +47,11 @@ public class Produto {
 	public void setQuantidadeEstoque(Long quantidadeEstoque) {
 		this.quantidadeEstoque = quantidadeEstoque;
 	}
+
 	public Categoria getCategoria() {
 		return categoria;
 	}
+
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}

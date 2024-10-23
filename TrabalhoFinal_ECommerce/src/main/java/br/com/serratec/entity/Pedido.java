@@ -1,12 +1,9 @@
 package br.com.serratec.entity;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 import br.com.serratec.enums.StatusEnum;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -15,32 +12,22 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 
 @Entity
 public class Pedido {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	private Double valorTotal;
-	private LocalDate data;
-	private LocalTime hora;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
-	
+
 	@Enumerated(EnumType.ORDINAL)
 	private StatusEnum status;
-	
-	@OneToMany(mappedBy = "id.pedido")
-	private Set<Carrinho> carrinho = new HashSet<>();
-	
-	public Set<Carrinho> getCarrinho() {
-		return carrinho;
-	}
 
 	public Long getId() {
 		return id;
@@ -64,22 +51,6 @@ public class Pedido {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
-	}
-
-	public LocalDate getData() {
-		return data;
-	}
-
-	public void setData(LocalDate data) {
-		this.data = data;
-	}
-
-	public LocalTime getHora() {
-		return hora;
-	}
-
-	public void setHora(LocalTime hora) {
-		this.hora = hora;
 	}
 
 	public StatusEnum getStatus() {
@@ -106,5 +77,5 @@ public class Pedido {
 		Pedido other = (Pedido) obj;
 		return Objects.equals(id, other.id);
 	}
-	
+
 }

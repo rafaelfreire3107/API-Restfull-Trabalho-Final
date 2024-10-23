@@ -7,7 +7,7 @@ public class ProdutoRequestDTO {
 	private String nomeProduto;
 	private Double valorProduto;
 	private Long qtdEstoque;
-	private Long nomeCategoria;
+	private Long idCategoria;
 	
 	public ProdutoRequestDTO() {
 	}
@@ -16,7 +16,7 @@ public class ProdutoRequestDTO {
 		this.nomeProduto = produto.getNome();
 		this.valorProduto = produto.getValor();
 		this.qtdEstoque = produto.getQuantidadeEstoque();
-		this.nomeCategoria = produto.getCategoria().getId();
+		this.idCategoria = produto.getCategoria().getId();
 	}
 
 	public String getNomeProduto() {
@@ -43,13 +43,12 @@ public class ProdutoRequestDTO {
 		this.qtdEstoque = qtdEstoque;
 	}
 
-	public Long getNomeCategoria() {
-		return nomeCategoria;
+	public Long getIdCategoria() {
+		return idCategoria;
 	}
 
-	public void setNomeCategoria(Long nomeCategoria) {
-		this.nomeCategoria = nomeCategoria;
+	public void setIdCategoria(Long idCategoria) {
+		this.idCategoria = idCategoria;
 	}
-	
 	
 }
