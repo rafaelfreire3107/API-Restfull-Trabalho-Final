@@ -16,11 +16,11 @@ public class Favorite {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
-    private Cliente cliente; // Relacionamento com Cliente
+    private Cliente cliente; 
 
     @ManyToOne
     @JoinColumn(name = "produto_id", nullable = false)
-    private Produto produto; // Relacionamento com Produto
+    private Produto produto; 
 
     // Getters e Setters
     public Long getId() {
