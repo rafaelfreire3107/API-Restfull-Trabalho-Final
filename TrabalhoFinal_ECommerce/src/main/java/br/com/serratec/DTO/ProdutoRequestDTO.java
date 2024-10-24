@@ -8,6 +8,7 @@ public class ProdutoRequestDTO {
 	private Double valorProduto;
 	private Long qtdEstoque;
 	private Long idCategoria;
+	private Long idVendedor;
 	
 	public ProdutoRequestDTO() {
 	}
@@ -17,7 +18,8 @@ public class ProdutoRequestDTO {
 		this.valorProduto = produto.getValor();
 		this.qtdEstoque = produto.getQuantidadeEstoque();
 		this.idCategoria = produto.getCategoria().getId();
-	}
+		this.idVendedor = produto.getVendedor().getId();
+		}
 
 	public String getNomeProduto() {
 		return nomeProduto;
@@ -50,5 +52,15 @@ public class ProdutoRequestDTO {
 	public void setIdCategoria(Long idCategoria) {
 		this.idCategoria = idCategoria;
 	}
+
+	public Long getIdVendedor() {
+		return idVendedor;
+	}
+
+	public void setIdVendedor(Long idVendedor) {
+		this.idVendedor = idVendedor;
+	}
+	
+	
 	
 }

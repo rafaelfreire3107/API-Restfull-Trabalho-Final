@@ -32,14 +32,13 @@ public class OpenApiConfig {
 		devServer.setDescription("URL da área de produção");
 		
 		Contact contact = new Contact();
-		contact.setName("Luis Caetano");
-		contact.setEmail("luiscaetano18180909@gmail.com");
+		contact.setName("Delmir Augusto, Denilson Santos, Larissa Teodoro, Luis Filipe, Rafael Freire");
 		contact.setUrl("https://www.serratec.com.br");
 		
 		License apacheLicense = new License().name("Apache").url("https://www.apache.org/licenses/LICENSE-2.0");
 		
-		Info info = new Info().title("API DO SERRATEC").version("1.0").contact(contact)
-				.description("API PARA ESTUDOS").termsOfService("https://www.serratec.com.br")
+		Info info = new Info().title("API DO SERRATEC - TRABALHO FINAL").version("1.0").contact(contact)
+				.description("TRABALHO DE E-COMMERCE").termsOfService("https://www.serratec.com.br")
 				.license(apacheLicense);
 		
 		return new OpenAPI().info(info).servers(List.of(devServer, prodServer));

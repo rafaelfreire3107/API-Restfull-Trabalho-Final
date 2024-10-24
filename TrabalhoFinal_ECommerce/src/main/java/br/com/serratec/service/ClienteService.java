@@ -32,6 +32,9 @@ public class ClienteService {
 
 	@Autowired
 	private MailConfig mailConfig;
+	
+	@Autowired
+	private SmsService smsService;
 
 	public List<ClienteResponseDTO> listar() {
 		List<Cliente> clientes = clienteRepository.findAll();
@@ -80,6 +83,11 @@ public class ClienteService {
 		}
 		cliente = clienteRepository.save(cliente);
 		mailConfig.sendEmail(cliente.getEmail(), "Confirmação de cadastro", cliente.toString());
+		smsService.sendSms(cliente.getTelefone(),"Cadastro realizado com sucesso!"
+				+"\nNome: " + cliente.getNome()
+				+ "\nE-mail: " + cliente.getEmail()
+				+ "\nCEP: " + endereco.getCep());
+		
 		return new ClienteResponseDTO(cliente);
 	}
 
@@ -102,7 +110,10 @@ public class ClienteService {
 
 	    cliente = clienteRepository.save(cliente);
 	    mailConfig.sendEmail(cliente.getEmail(), "Atualização de cadastro", cliente.toString());
-	    
+	    smsService.sendSms(cliente.getTelefone(),"Cadastro atualizado com sucesso!"
+				+"\nNome: " + cliente.getNome()
+				+ "\nE-mail: " + cliente.getEmail()
+				+ "\nCEP: " + endereco.getCep());
 	    return new ClienteResponseDTO(cliente);
 	}
 

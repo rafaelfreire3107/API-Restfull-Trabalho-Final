@@ -9,6 +9,7 @@ public class ProdutoResponseDTO {
 	private Double valorProduto;
 	private Long qtdEstoque;
 	private String nomeCategoria;
+	private String nomeVendedor;
 	
 	public ProdutoResponseDTO() {
 	}
@@ -19,6 +20,7 @@ public class ProdutoResponseDTO {
 		this.valorProduto = produto.getValor();
 		this.qtdEstoque = produto.getQuantidadeEstoque();
 		this.nomeCategoria = produto.getCategoria().getNome();
+		this.nomeVendedor = produto.getVendedor().getNomeLoja();
 	}
 
 	
@@ -61,6 +63,14 @@ public class ProdutoResponseDTO {
 
 	public void setNomeCategoria(String nomeCategoria) {
 		this.nomeCategoria = nomeCategoria;
+	}
+
+	public String getNomeVendedor() {
+		return nomeVendedor;
+	}
+
+	public void setNomeVendedor(String nomeVendedor) {
+		this.nomeVendedor = nomeVendedor;
 	}
 
 	

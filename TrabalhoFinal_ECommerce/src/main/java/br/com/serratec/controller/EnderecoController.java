@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.serratec.DTO.EnderecoResponseDTO;
 import br.com.serratec.service.EnderecoService;
+import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
 @RequestMapping("/enderecos")
@@ -16,7 +17,9 @@ public class EnderecoController {
 
 	@Autowired
 	private EnderecoService service;
-
+	
+	@Operation(summary = "Lista informações de um endereço pelo cep", description = "A resposta retorna CEP, "
+			+ "Logradouro, Bairro, Localidade e UF")
 	@GetMapping("{cep}")
 	public ResponseEntity<EnderecoResponseDTO> buscarCep(@PathVariable String cep) {
 		return ResponseEntity.ok(service.buscar(cep));

@@ -3,18 +3,19 @@ package br.com.serratec.DTO;
 import br.com.serratec.entity.Carrinho;
 
 public class CarrinhoRequestDTO {
-
-	private Double preço;
+	
 	private Integer quantidade;
 	private Long idPedido;
+	private Long idProduto;
+	private Double valorVenda;
 
 	public CarrinhoRequestDTO() {
 	}
 
 	public CarrinhoRequestDTO(Carrinho carrinho) {
-		this.preço = carrinho.getProduto().getValor();
 		this.quantidade = carrinho.getQuantidade();
 		this.idPedido = carrinho.getPedido().getId();
+		this.idProduto = carrinho.getProduto().getId();
 	}
 	
 
@@ -26,12 +27,20 @@ public class CarrinhoRequestDTO {
 		this.idPedido = idPedido;
 	}
 
-	public Double getPreço() {
-		return preço;
+	public Long getIdProduto() {
+		return idProduto;
 	}
 
-	public void setPreço(Double preço) {
-		this.preço = preço;
+	public void setIdProduto(Long idProduto) {
+		this.idProduto = idProduto;
+	}
+
+	public Double getValorVenda() {
+		return valorVenda;
+	}
+
+	public void setValorVenda(Double valorVenda) {
+		this.valorVenda = valorVenda;
 	}
 
 	public Integer getQuantidade() {

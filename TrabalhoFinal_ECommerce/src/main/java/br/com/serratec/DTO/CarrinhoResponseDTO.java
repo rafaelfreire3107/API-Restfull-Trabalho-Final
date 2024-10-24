@@ -4,7 +4,6 @@ import br.com.serratec.entity.Carrinho;
 
 public class CarrinhoResponseDTO {
 	
-	private Double preço;
 	private Double desconto;
 	private Integer quantidade;
 	private Double subTotal;
@@ -13,18 +12,9 @@ public class CarrinhoResponseDTO {
 	}
 
 	public CarrinhoResponseDTO(Carrinho carrinho, Double subTotal) {
-		this.preço = carrinho.getProduto().getValor();
 		this.desconto = carrinho.getDesconto();
 		this.quantidade = carrinho.getQuantidade();
 		this.subTotal = subTotal;
-	}
-
-	public Double getPreço() {
-		return preço;
-	}
-
-	public void setPreço(Double preço) {
-		this.preço = preço;
 	}
 
 	public Double getDesconto() {

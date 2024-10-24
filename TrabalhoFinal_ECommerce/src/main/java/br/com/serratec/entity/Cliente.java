@@ -33,9 +33,8 @@ public class Cliente {
 	@Email(message = "E-mail inválido") 
 	@NotBlank(message = "Preencha o campo corretamente")
 	private String email;
-	
-    @Pattern(regexp = "^\\(\\d{2}\\) 9\\d{4}-\\d{4}$", 
-    		message = "Preencha o campo de telefone corretamente, exemplo:(XX) 9XXXX-XXXX")
+
+	@Pattern(regexp = "^\\+?[1-9]\\d{1,14}$", message = "Número de telefone inválido")
     @Column(nullable = false)
 	private String telefone;
     
@@ -44,7 +43,7 @@ public class Cliente {
 	private Endereco endereco;
     
     public String toString() {
-		return "Id: " + id + "\n" + "Nome: " + nome + "\n" + "E-mail: " + email + "\n" + "Telefone: " + telefone + "\n" + "CEP: " + getEndereco().getCep();
+		return "Nome: " + nome + "\n" + "E-mail: " + email + "\n" + "Telefone: " + telefone + "\n" + "CEP: " + getEndereco().getCep();
 	}
 	
 	public Long getId() {
