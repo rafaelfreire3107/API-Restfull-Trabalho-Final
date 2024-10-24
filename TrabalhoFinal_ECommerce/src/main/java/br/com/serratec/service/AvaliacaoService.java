@@ -23,7 +23,6 @@ public class AvaliacaoService {
 	        return avaliacaoRepository.findAll();
 	    }
 
-
 	    public Avaliacao addReview(Avaliacao avaliacao) {
 	        return avaliacaoRepository.save(avaliacao);
 	    }
