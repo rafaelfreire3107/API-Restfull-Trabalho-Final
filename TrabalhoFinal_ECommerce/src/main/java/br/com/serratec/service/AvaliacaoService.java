@@ -1,10 +1,12 @@
 package br.com.serratec.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.serratec.DTO.AvaliacaoResponseDTO;
 import br.com.serratec.entity.Avaliacao;
 import br.com.serratec.exception.ResourceNotFoundException;
 import br.com.serratec.repository.AvaliacaoRepository;
@@ -12,19 +14,30 @@ import br.com.serratec.repository.AvaliacaoRepository;
 @Service
 public class AvaliacaoService {
 	    
-	    @Autowired
+	 @Autowired
 	    private AvaliacaoRepository avaliacaoRepository;
 
-	    public List<Avaliacao> getAvaliacaoByProduto(Long produtoId) {
-	        return avaliacaoRepository.findByProdutoId(produtoId);
-	    }
-	    
-	    public List<Avaliacao> getAllAvaliacoes() {
-	        return avaliacaoRepository.findAll();
+	    public List<AvaliacaoResponseDTO> getAvaliacaoByProduto(Long produtoId) {
+	        List<Avaliacao> avaliacoes = avaliacaoRepository.findByProdutoId(produtoId);
+	        return avaliacoes.stream()
+	                .map(this::convertToDTO)
+	                .collect(Collectors.toList());
 	    }
 
-	    public Avaliacao addReview(Avaliacao avaliacao) {
-	        return avaliacaoRepository.save(avaliacao);
+	    public List<AvaliacaoResponseDTO> getAllAvaliacoes() {
+	        List<Avaliacao> avaliacoes = avaliacaoRepository.findAll();
+	        return avaliacoes.stream()
+	                .map(this::convertToDTO)
+	                .collect(Collectors.toList());
+	    }
+
+	    private AvaliacaoResponseDTO convertToDTO(Avaliacao avaliacao) {
+	        return new AvaliacaoResponseDTO(
+	                avaliacao.getAvaliacao(),
+	                avaliacao.getComentario(),
+	                avaliacao.getProduto().getNome(),  // Assumindo que Produto tenha um atributo 'nome'
+	                avaliacao.getCliente().getNome()   // Assumindo que Cliente tenha um atributo 'nome'
+	        );
 	    }
 
 	    public void deleteReview(Long avaliacaoId) {
