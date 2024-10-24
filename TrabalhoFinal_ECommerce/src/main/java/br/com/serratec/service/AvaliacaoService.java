@@ -39,6 +39,10 @@ public class AvaliacaoService {
 	                avaliacao.getCliente().getNome()   // Assumindo que Cliente tenha um atributo 'nome'
 	        );
 	    }
+	    
+	    public Avaliacao addReview(Avaliacao avaliacao) {
+	        return avaliacaoRepository.save(avaliacao);
+	    }
 
 	    public void deleteReview(Long avaliacaoId) {
 	    	avaliacaoRepository.deleteById(avaliacaoId);
